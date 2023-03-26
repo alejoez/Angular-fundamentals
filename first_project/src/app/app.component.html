@@ -1,0 +1,101 @@
+<!--ngSwitch-->
+<h1>ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<div [ngSwitch]="person.name">
+    <p *ngSwitchCase="'alejandro'">
+        Person is alejandro
+    </p>
+    <p *ngSwitchCase="'alejandra'">
+        Person is alejandra
+    </p>
+    <p *ngSwitchCase="'sebastian'">
+        Person is sebastian
+    </p>
+    <p *ngSwitchCase="'santiago'">
+        Person is santiago
+    </p>
+    <p>Doesn't do match</p>
+</div>
+
+<hr/>
+
+<!--ngFor for objects-->
+<h1>*ngFor for objects</h1>
+<div class="product--grid">
+    <div *ngFor="let product of products">
+        <img [alt]="product.nameProduct" [src]="product.image" />
+        <h2>{{product.price}}</h2>
+        <p >{{product.name}}</p>
+    </div>
+</div>
+
+<hr/>
+
+<!--ngFor-->
+<h1>*ngFor</h1>
+<input type="text" required [(ngModel)]="newEmoji" />
+<button (click)="addEmoji()">Add emoji</button>
+<ul>
+    <li *ngIf="emojis.length == 0">There isn't element anymore.</li>
+    <li *ngFor="let emoji of emojis; index as i">
+        {{ i }}:{{ emoji }}
+        <button (click)="deleteEmoji(i)">Delete emoji</button>
+    </li>
+</ul>
+
+<hr/>
+
+<!--ngIf-->
+<h1>*ngIf</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<p *ngIf="person.name === 'Alejandro'" >I'm Alejo</p>
+<p *ngIf="person.name === 'Alejandro' && person.age === 25" >I'm Alejo and I'm 25 years old</p>
+
+<hr/>
+
+<!--Data binding-->
+<h1>ngModel</h1>
+<p>Name {{ person.name }}</p>
+<input type="text" required #nameInput="ngModel" [(ngModel)]="person.name" />
+<p>Valid: {{ nameInput.valid }}</p>
+<p>Age {{ person.age }}</p>
+<input type="number" max="25" min="10" required #ageInput="ngModel" [(ngModel)]="person.age" />
+<p>Valid: {{ ageInput.valid }}</p>
+
+<hr/>
+
+<!--Event Binding-->
+<h1>Events</h1>
+<button [disabled]="btnDisabled">Send</button>
+<button (click)="toggleButton()">Toggle button</button>
+<p>Age {{ person.age }}</p>
+<button (click)="increaseAge()">Age++</button>
+<div class="box" (scroll)="onScroll($event)">
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti repellat sed maiores quae esse sint corporis. Eligendi non est dolorem, sed velit neque, ex commodi, incidunt recusandae odio facilis possimus.</p>
+</div>
+<p>Name: {{ person.name }}</p>
+<input type="text" [value]="person.name" (keyup)="changeName($event)" />
+
+<hr/>
+
+<!--Property binding-->
+<h1>Properties</h1>
+<button [disabled]="btnDisabled">Send</button>
+<input type = "text" [value]="name"/><!--We can access to a value of the variable-->
+<input type = "text" [value]="person.age"/> <!--We can access to object's attributes-->
+<progress max="100" [value]="person.age"></progress>
+<img width="100" [src]="person.avatar" />
+
+<hr/>
+
+<!--String interpolation-->
+<h1>{{ 'Hi platzi' }}</h1>
+<h2>1+1 = {{1+1}}</h2>
+<p>Hello, my name's {{ name }} and I'm {{ age }}</p>
+<img width="100" src={{img}} alt="image" />
+
+<!--What's the diference between both?
+    What's the best way?
+
+    String interpolation: It works better when We need renderize content in a paragraph or something else
+    Property binding: It's specify for properties of html elements.-->

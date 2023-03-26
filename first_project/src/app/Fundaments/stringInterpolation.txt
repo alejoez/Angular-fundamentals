@@ -1,0 +1,5 @@
+String interpolotion is the way to send datas from our component to the view.
+using double key {{}} we can print the value of a variable, do maths opertions or call to functions inside the code
+
+the actions of string interpolation you can view in this project in two files,
+"app.component.html" and app.component.ts
