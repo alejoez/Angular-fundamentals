@@ -1,0 +1,4 @@
+<p><input type="text" [(ngModel)]="imgParent" /></p>
+<app-img (loaded)="onLoaded($event)" [img]="imgParent"></app-img><!--This is the way to call a componente from another one, in this case, we can check that name in img.component.ts, selector-->
+
+<app-product [product]="product" *ngFor="let product of products"></app-product>
